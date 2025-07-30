@@ -11,7 +11,7 @@ import productRoutes from "./routes/productRoutes.js";
 dotenv.config();
 
 const app = express();
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT;
 
 // Connect to MongoDB
 connectToMongoDB();
@@ -19,6 +19,9 @@ connectToMongoDB();
 //   .then(() => console.log('✅ MongoDB connected'))
 //   .catch((err) => console.error(err));
 
+app.options("*", (req, res) => {
+  res.sendStatus(200);
+});
 // Middleware to parse JSON bodies
 if (process.env.NODE_ENV !== "production") {
   app.use(
