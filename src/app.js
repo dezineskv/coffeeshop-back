@@ -2,9 +2,12 @@ import { config } from "dotenv";
 import express from "express";
 import cors from "cors";
 import productRoutes from "./routes/productRoutes";
+import connectToMongoDB from "./config/mongoose.js";
+
 config();
 
 const app = express();
+connectToMongoDB();
 
 app.options("*", (req, res) => {
   res.sendStatus(200);

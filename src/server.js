@@ -11,7 +11,7 @@ import productRoutes from "./routes/productRoutes.js";
 dotenv.config();
 
 const app = express();
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || 5000;
 
 // Connect to MongoDB
 connectToMongoDB();
@@ -22,28 +22,23 @@ connectToMongoDB();
 app.options("*", (req, res) => {
   res.sendStatus(200);
 });
-// Middleware to parse JSON bodies
-// if (process.env.NODE_ENV !== "production") {
-//   app.use(
-//     cors({
-//       origin: "http://localhost:3001",
-//       credentials: true,
-//     })
-//   );
-// } else if (process.env.NODE_ENV === "production") {
-//   app.use(
-//     cors({
-//       origin: "https://coffeeshop-front.vercel.app/",
-//       credentials: true,
-//     })
-//   );
-// }
-app.use(
-  cors({
-    origin: "https://coffeeshop-front.vercel.app", // or use a dynamic origin check
-    credentials: true,
-  })
-);
+//Middleware for prod/dev environments
+if (process.env.NODE_ENV !== "production") {
+  app.use(
+    cors({
+      origin: "http://localhost:3001",
+      credentials: true,
+    })
+  );
+} else if (process.env.NODE_ENV === "production") {
+  app.use(
+    cors({
+      origin: "https://coffeeshop-front.vercel.app/",
+      credentials: true,
+    })
+  );
+}
+
 app.use(express.json());
 app.use("/api/data", productRoutes);
 
