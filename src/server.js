@@ -40,7 +40,7 @@ app.options("*", (req, res) => {
 // }
 app.use(
   cors({
-    origin: "https://coffeeshop-front.vercel.app/", // or use a dynamic origin check
+    origin: "https://coffeeshop-front.vercel.app", // or use a dynamic origin check
     credentials: true,
   })
 );

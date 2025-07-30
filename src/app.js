@@ -12,10 +12,11 @@ app.options("*", (req, res) => {
 
 app.use(
   cors({
-    origin: "https://coffeeshop-front.vercel.app/", // or use a dynamic origin check
+    origin: "https://coffeeshop-front.vercel.app", // or use a dynamic origin check
     credentials: true,
   })
-);app.use(express.json());
+);
+app.use(express.json());
 
 app.use("/api/data", productRoutes);
 // app.get("/api/data/:id", async (req, res) => {
