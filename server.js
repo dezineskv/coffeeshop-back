@@ -1,11 +1,11 @@
 import express from "express";
 import dotenv from "dotenv";
-import connectToMongoDB from "./config/mongoose.js";
+import connectToMongoDB from "./src/config/mongoose.js";
 import mongoose from "mongoose";
 import cors from "cors";
 // import Product from "./models/Product.js";
 // import path from "path";
-import productRoutes from "./routes/productRoutes.js";
+import productRoutes from "./src/routes/productRoutes.js";
 
 // Load environment variables
 dotenv.config();
