@@ -19,7 +19,7 @@ connectToMongoDB();
 //   .then(() => console.log('✅ MongoDB connected'))
 //   .catch((err) => console.error(err));
 
-app.options("*", (req, res) => {
+app.options("/{*splat}", (req, res) => {
   res.sendStatus(200);
 });
 //Middleware for prod/dev environments

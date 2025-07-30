@@ -9,7 +9,7 @@ config();
 const app = express();
 connectToMongoDB();
 
-app.options("*", (req, res) => {
+app.options("/{*splat}", (req, res) => {
   res.sendStatus(200);
 });
 
