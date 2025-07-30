@@ -6,12 +6,21 @@ config();
 
 const app = express();
 
-app.use(
-  cors({
-    origin: "http://localhost:3001",
-    credentials: true,
-  })
-);
+if (process.env.NODE_ENV !== "production") {
+  app.use(
+    cors({
+      origin: "http://localhost:3001",
+      credentials: true,
+    })
+  );
+} else if (process.env.NODE_ENV === "production") {
+  app.use(
+    cors({
+      origin: "hhttps://coffeeshop-front.vercel.app/",
+      credentials: true,
+    })
+  );
+}
 app.use(express.json());
 
 app.use("/api/data", productRoutes);

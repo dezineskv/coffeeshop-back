@@ -1,6 +1,6 @@
 import express from "express";
 import dotenv from "dotenv";
-import  connectToMongoDB  from "./config/mongoose.js";
+import connectToMongoDB from "./config/mongoose.js";
 import mongoose from "mongoose";
 import cors from "cors";
 // import Product from "./models/Product.js";
@@ -27,6 +27,13 @@ if (process.env.NODE_ENV !== "production") {
       credentials: true,
     })
   );
+} else if (process.env.NODE_ENV === "production") {
+  app.use(
+    cors({
+      origin: "hhttps://coffeeshop-front.vercel.app/",
+      credentials: true,
+    })
+  );
 }
 app.use(express.json());
 app.use("/api/data", productRoutes);
@@ -35,8 +42,6 @@ app.use("/api/data", productRoutes);
 // app.get("/api/data", (req: Request, res: Response) => {
 //   res.send("Hello from Express with TypeScript & MongoDB!");
 // });
-
-
 
 // const Product = mongoose.model("Product", ProductSchema);
 
