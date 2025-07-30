@@ -30,7 +30,7 @@ if (process.env.NODE_ENV !== "production") {
 } else if (process.env.NODE_ENV === "production") {
   app.use(
     cors({
-      origin: "hhttps://coffeeshop-front.vercel.app/",
+      origin: "https://coffeeshop-front.vercel.app/",
       credentials: true,
     })
   );
