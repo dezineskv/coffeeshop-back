@@ -3,11 +3,9 @@
   "version": "1.0.0",
   "main": "src/server.js",
   "scripts": {
-    "start": "node src/server.js",
+    "start": "node server.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "watchtsc": "tsc -w",
-    "dev": "nodemon src/server.js",
-    "build": "tsc"
+    "dev": "nodemon server.js"
   },
   "keywords": [],
   "author": "",
